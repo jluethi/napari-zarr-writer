@@ -8,15 +8,9 @@ contributions:
     - id: napari-zarr-writer.write_single_image
       python_name: napari_zarr_writer._writer:write_single_image
       title: Save image data with zarr writer 
-    - id: napari-zarr-writer.make_qwidget
-      python_name: napari_zarr_writer._widget:ExampleQWidget
-      title: Make example QWidget
-    - id: napari-zarr-writer.make_magic_widget
-      python_name: napari_zarr_writer._widget:example_magic_widget
-      title: Make example magic widget
-    - id: napari-zarr-writer.make_func_widget
-      python_name: napari_zarr_writer._widget:example_function_widget
-      title: Make example function widget  
+    - id: napari-zarr-writer.zarr_writer_widget
+      python_name: napari_zarr_writer._widget:zarr_writer_widget
+      title: Zarr Writer
   writers:
     - command: napari-zarr-writer.write_multiple
       layer_types: ['image*','labels*']
@@ -25,10 +19,5 @@ contributions:
       layer_types: ['image']
       filename_extensions: ['.npy'] 
   widgets:
-    - command: napari-zarr-writer.make_qwidget
-      display_name: Example QWidget
-    - command: napari-zarr-writer.make_magic_widget
-      display_name: Example Magic Widget
-    - command: napari-zarr-writer.make_func_widget
-      autogenerate: true
-      display_name: Example Function Widget 
+    - command: napari-zarr-writer.zarr_writer_widget
+      display_name: Zarr Writer

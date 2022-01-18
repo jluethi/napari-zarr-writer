@@ -5,9 +5,7 @@ import numpy as np
 
 from magicgui import magicgui
 
-
-def get_data(layer):
-    return layer.data, layer.meta
+from _util import get_data
 
 
 @magicgui(
@@ -25,10 +23,12 @@ def zarr_writer_widget(
     byte_order="tczyx",
     rechunker=False,
 ) -> None:
-    #data, meta = get_data(layer)
-    #img_np = np.asarray(data)
-    img_np = np.asarray(layer.data)
+    data, meta = get_data(layer)
+    # mock
+    print(data.shape)
+    print(meta)
+    img_np = np.asarray(data)
     store = zarr.DirectoryStore(save_path)
     g = zarr.group(store=store)
     ome_zarr.writer.write_image(img_np, g)
-    print('It is running')
+    print('File saved')
