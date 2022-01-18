@@ -5,7 +5,7 @@ import numpy as np
 
 from magicgui import magicgui
 
-from _util import get_data
+from ._util import get_data
 
 
 @magicgui(
