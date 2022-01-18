@@ -1,10 +1,10 @@
 # napari-zarr-writer
 
-[![License](https://img.shields.io/pypi/l/napari-zarr-writer.svg?color=green)](https://github.com/@tomburke-rse, @jluethi, @ch-n, @berombau/napari-zarr-writer/raw/main/LICENSE)
+[![License](https://img.shields.io/pypi/l/napari-zarr-writer.svg?color=green)](https://github.com/jluethi/napari-zarr-writer/raw/main/LICENSE)
 [![PyPI](https://img.shields.io/pypi/v/napari-zarr-writer.svg?color=green)](https://pypi.org/project/napari-zarr-writer)
 [![Python Version](https://img.shields.io/pypi/pyversions/napari-zarr-writer.svg?color=green)](https://python.org)
-[![tests](https://github.com/@tomburke-rse, @jluethi, @ch-n, @berombau/napari-zarr-writer/workflows/tests/badge.svg)](https://github.com/@tomburke-rse, @jluethi, @ch-n, @berombau/napari-zarr-writer/actions)
-[![codecov](https://codecov.io/gh/@tomburke-rse, @jluethi, @ch-n, @berombau/napari-zarr-writer/branch/main/graph/badge.svg)](https://codecov.io/gh/@tomburke-rse, @jluethi, @ch-n, @berombau/napari-zarr-writer)
+[![tests](https://github.com/jluethi/napari-zarr-writer/workflows/tests/badge.svg)](https://github.com/jluethi/napari-zarr-writer/actions)
+[![codecov](https://codecov.io/gh/jluethi/napari-zarr-writer/branch/main/graph/badge.svg)](https://codecov.io/gh/jluethi/napari-zarr-writer)
 [![napari hub](https://img.shields.io/endpoint?url=https://api.napari-hub.org/shields/napari-zarr-writer)](https://napari-hub.org/plugins/napari-zarr-writer)
 
 Napari plugin to write zarr files
