@@ -7,7 +7,9 @@
 [![codecov](https://codecov.io/gh/jluethi/napari-zarr-writer/branch/main/graph/badge.svg)](https://codecov.io/gh/jluethi/napari-zarr-writer)
 [![napari hub](https://img.shields.io/endpoint?url=https://api.napari-hub.org/shields/napari-zarr-writer)](https://napari-hub.org/plugins/napari-zarr-writer)
 
-Napari plugin to write zarr files
+Napari plugin to write zarr files  
+Prototype created at the napari hackathon on January 18th, 2022  
+Current state: Widget has some issues being displayed within napari, but can be called using the widget_test.py script. Saves layer as a zarr file, but not yet compatible with the ome-zarr reader in napari.
 
 ----------------------------------
 
@@ -23,11 +25,11 @@ https://napari.org/plugins/stable/index.html
 
 ## Installation
 
-You can install `napari-zarr-writer` via [pip]:
+Currently needs to be installed manually:
 
-    pip install napari-zarr-writer
-
-
+    git clone https://github.com/jluethi/napari-zarr-writer
+    cd napari-zarr-writer
+    pip install -e .
 
 
 ## Contributing
