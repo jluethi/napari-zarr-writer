@@ -2,13 +2,13 @@ import napari
 import zarr
 import ome_zarr
 
-from magicgui import magicgui
+from magicgui import magic_factory
 from pathlib import Path
 
 from ._util import *
 
 
-@magicgui(
+@magic_factory(
     call_button="Write to disk",
     layout="vertical",
     save_path={"widget_type": "FileEdit", "label": "Save file as:", "mode": "w"},
