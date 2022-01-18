@@ -2,9 +2,7 @@ import napari
 
 from magicgui import magicgui
 
-
-def get_data(layer):
-    return layer.data, layer.meta
+from _util import get_data
 
 
 @magicgui(
@@ -23,3 +21,6 @@ def zarr_writer_widget(
     rechunker=False,
 ) -> None:
     data, meta = get_data(layer)
+    # mock
+    print(data.shape)
+    print(meta)
