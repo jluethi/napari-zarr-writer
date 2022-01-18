@@ -1,3 +1,5 @@
+from ast import literal_eval as make_tuple
+
 import napari
 import zarr
 import ome_zarr
@@ -6,6 +8,15 @@ import numpy as np
 from magicgui import magicgui
 
 from _util import get_data
+
+def parse_chunks(chunks):
+    if isinstance(chunks, str):
+        if chunks == 'None':
+            return None
+        else:
+            return make_tuple(chunks)
+    else:
+        return None
 
 
 @magicgui(
@@ -27,8 +38,9 @@ def zarr_writer_widget(
     # mock
     print(data.shape)
     print(meta)
+    chunks = parse_chunks(chunks)
     img_np = np.asarray(data)
     store = zarr.DirectoryStore(save_path)
     g = zarr.group(store=store)
-    ome_zarr.writer.write_image(img_np, g)
+    ome_zarr.writer.write_image(img_np, g, chunks=chunks)
     print('File saved')
