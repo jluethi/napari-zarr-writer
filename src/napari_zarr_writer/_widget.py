@@ -1,4 +1,7 @@
 import napari
+import zarr
+import ome_zarr
+import numpy as np
 
 from magicgui import magicgui
 
@@ -22,4 +25,10 @@ def zarr_writer_widget(
     byte_order="tczyx",
     rechunker=False,
 ) -> None:
-    data, meta = get_data(layer)
+    #data, meta = get_data(layer)
+    #img_np = np.asarray(data)
+    img_np = np.asarray(layer.data)
+    store = zarr.DirectoryStore(save_path)
+    g = zarr.group(store=store)
+    ome_zarr.writer.write_image(img_np, g)
+    print('It is running')
