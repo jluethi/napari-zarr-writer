@@ -1,46 +1,43 @@
-from ast import literal_eval as make_tuple
-
 import napari
 import zarr
 import ome_zarr
-import numpy as np
 
 from magicgui import magicgui
+from pathlib import Path
 
-from ._util import get_data
-
-def parse_chunks(chunks):
-    if isinstance(chunks, str):
-        if chunks == 'None':
-            return None
-        else:
-            return make_tuple(chunks)
-    else:
-        return None
+from ._util import *
 
 
 @magicgui(
     call_button="Write to disk",
     layout="vertical",
+    save_path={"widget_type": "FileEdit", "label": "Save file as:", "mode": "w"},
     chunks={"widget_type": "LineEdit"},
     byte_order={"widget_type": "LineEdit"},
-    rechunker={"widget_type": "CheckBox"},
-    save_path={"widget_type": "FileEdit", "label": "Save file as:", "mode": "w"},
+    # rechunker={"widget_type": "CheckBox"}, # not yet implemented
 )
 def zarr_writer_widget(
+    viewer: napari.Viewer,
     layer: napari.layers.Layer,
-    save_path,
+    save_path: Path,
     chunks=None,
     byte_order="tczyx",
-    rechunker=False,
+    # rechunker=False, # not yet implemented
 ) -> None:
     data, meta = get_data(layer)
-    # mock
-    print(data.shape)
-    print(meta)
-    chunks = parse_chunks(chunks)
-    img_np = np.asarray(data)
+
+    # hande special cases
+    if isinstance(data, type(None)):
+        return None
+    elif str(save_path) == '.':
+        viewer.status = 'ZarrWriter: No save path specified!'
+        return None
+
+    # init zarr dir
     store = zarr.DirectoryStore(save_path)
-    g = zarr.group(store=store)
-    ome_zarr.writer.write_image(img_np, g, chunks=chunks)
+    group = zarr.group(store=store)
+
+    # save layer
+    chunks = parse_chunks(chunks)
+    ome_zarr.writer.write_image(data, group, chunks=chunks, byte_order=byte_order)
     print('File saved')
